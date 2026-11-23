@@ -1,0 +1,637 @@
+
+/* ==========================================
+   ОСНОВНЫЕ НАСТРОЙКИ
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10121b;
+    color: #f1f1f1;
+    min-height: 100vh;
+}
+
+/* ШАПКА */
+
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #252b48, #473477);
+    border-bottom: 1px solid #555;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #c5c5d5;
+    font-size: 16px;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР */
+
+.container {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* КАРТОЧКИ */
+
+.component {
+    min-width: 0;
+    background: #1b1e2b;
+    border: 1px solid #30364c;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, border-color 0.3s;
+    scroll-margin-top: 25px;
+}
+
+.component:hover {
+    transform: translateY(-4px);
+    border-color: #8170dc;
+}
+
+.component h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #a99bff;
+}
+
+/* ПОЛЯ ВВОДА */
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    background: #111522;
+    border: 1px solid #414967;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #9381ff;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #ccccdc;
+    font-size: 14px;
+}
+
+/* КНОПКИ */
+
+button {
+    padding: 11px 18px;
+    margin: 5px 3px;
+    border: none;
+    border-radius: 8px;
+    background: #6554c0;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: #8372e8;
+    transform: scale(1.04);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* 1. ТАЙМЕР */
+
+#timerDisplay {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #a99bff;
+    margin: 20px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.buttons {
+    text-align: center;
+}
+
+/* 2. АККОРДЕОН */
+
+.accordion-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin: 5px 0 0;
+    padding: 14px;
+    background: #292d42;
+    border-radius: 8px;
+}
+
+.accordion-button span {
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.accordion-button.active span {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background: #111522;
+    border-radius: 0 0 8px 8px;
+    color: #ccccdc;
+    line-height: 1.6;
+    transition: max-height 0.3s, padding 0.3s;
+}
+
+.accordion-content.active {
+    max-height: 180px;
+    padding: 15px;
+}
+
+/* СОРТИРОВКА АККОРДЕОНА */
+
+.accordion-item {
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: grab;
+}
+
+.accordion-item:active {
+    cursor: grabbing;
+}
+
+.accordion-item.dragging {
+    opacity: 0.4;
+    transform: scale(0.97);
+}
+
+.accordion-item.drag-over {
+    outline: 2px dashed #a99bff;
+    outline-offset: 2px;
+}
+
+.accordion-item .accordion-button {
+    margin: 0;
+}
+
+.accordion-hint {
+    margin-top: 12px;
+    color: #85899c;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* 3. СЛАЙДЕР */
+
+.slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-viewport {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.45s ease;
+}
+
+.slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 0 4px;
+}
+
+.slide img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slider-arrow {
+    flex-shrink: 0;
+    padding: 12px;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.slider-dots button {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border-radius: 50%;
+    background: #555b75;
+}
+
+.slider-dots button.active {
+    background: #a99bff;
+    transform: scale(1.2);
+}
+
+.slider-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #111522;
+    border-radius: 10px;
+}
+
+.slider-settings label {
+    min-width: 0;
+}
+
+.slider-settings select {
+    display: block;
+}
+
+.slider-settings input[type="range"] {
+    padding: 5px 0;
+    accent-color: #8170dc;
+}
+
+.slider-settings button {
+    grid-column: 1 / -1;
+}
+
+/* 4. ВКЛАДКИ */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.tab-button {
+    background: #292d42;
+}
+
+.tab-button.active {
+    background: #6554c0;
+}
+
+.tab-content {
+    display: none;
+    padding: 18px;
+    background: #111522;
+    border-radius: 8px;
+    color: #ccccdc;
+    line-height: 1.6;
+}
+
+.tab-content h3 {
+    color: #a99bff;
+    margin-bottom: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 5. TO-DO */
+
+.todo-input {
+    display: flex;
+    gap: 8px;
+}
+
+.todo-input input {
+    flex: 1;
+    min-width: 0;
+}
+
+.todo-input button {
+    flex-shrink: 0;
+}
+
+#taskList {
+    list-style: none;
+    margin-top: 15px;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    margin: 7px 0;
+    background: #292d42;
+    border-radius: 8px;
+}
+
+#taskList li span {
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #85899c;
+}
+
+.delete-task {
+    background: #b34355;
+    flex-shrink: 0;
+}
+
+.delete-task:hover {
+    background: #e05265;
+}
+
+/* 6. ГЕНЕРАТОР */
+
+#randomResult {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    color: #a99bff;
+    margin-top: 20px;
+}
+
+/* 7. ВЫПАДАЮЩЕЕ МЕНЮ */
+
+.dropdown {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.dropdown-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    margin: 0;
+    background: #292d42;
+    border: 1px solid #6554c0;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    text-align: left;
+}
+
+.dropdown-button:hover {
+    background: #353a55;
+}
+
+#dropdownArrow {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+#dropdownArrow.active {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #222638;
+    border: 1px solid #414967;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 13px 16px;
+    color: #e4e4f0;
+    text-decoration: none;
+    transition: background 0.2s, padding-left 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #6554c0;
+    padding-left: 23px;
+}
+
+.dropdown-result {
+    margin-top: 20px;
+    color: #a99bff;
+    font-size: 14px;
+}
+
+/* 8. МОДАЛЬНОЕ ОКНО */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-window {
+    position: absolute;
+    width: 460px;
+    height: 280px;
+    min-width: 280px;
+    min-height: 180px;
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    display: flex;
+    flex-direction: column;
+    background: #1b1e2b;
+    border: 1px solid #8170dc;
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: #292d42;
+    border-bottom: 1px solid #414967;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.modal-header:active {
+    cursor: grabbing;
+}
+
+.modal-header h3 {
+    color: #a99bff;
+    font-size: 17px;
+}
+
+.modal-close {
+    margin: 0;
+    padding: 3px 10px;
+    background: #b34355;
+    font-size: 22px;
+}
+
+.modal-body {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+    color: #ccccdc;
+    line-height: 1.7;
+}
+
+.modal-body h3 {
+    margin-bottom: 12px;
+    color: #a99bff;
+}
+
+.modal-body p {
+    margin-bottom: 12px;
+}
+
+.modal-resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 22px;
+    height: 22px;
+    cursor: nwse-resize;
+    touch-action: none;
+}
+
+.modal-resize-handle::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid #a99bff;
+    border-bottom: 3px solid #a99bff;
+}
+
+/* ПОДВАЛ */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+    background: #171a26;
+    color: #85899c;
+    line-height: 1.8;
+}
+
+/* АДАПТИВНОСТЬ */
+
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .component {
+        padding: 18px;
+    }
+
+    .slide img {
+        height: 180px;
+    }
+
+    .todo-input {
+        flex-direction: column;
+    }
+
+    .slider-settings {
+        grid-template-columns: 1fr;
+    }
+
+    .slider-settings button {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal-window {
+        width: calc(100vw - 24px);
+        height: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}

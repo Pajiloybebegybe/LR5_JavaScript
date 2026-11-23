@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №5 — JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>JavaScript Components</h1>
+    <p>Лабораторная работа №5 | Вариант 2</p>
+</header>
+
+<main class="container">
+
+    <!-- 1. Таймер -->
+    <section class="component" id="timer">
+        <h2>1. Таймер обратного отсчёта</h2>
+
+        <input type="number" id="timerInput"
+               placeholder="Введите секунды" min="1">
+
+        <div id="timerDisplay">00:00</div>
+
+        <div class="buttons">
+            <button id="startTimer">Старт</button>
+            <button id="pauseTimer">Пауза</button>
+            <button id="resetTimer">Сброс</button>
+        </div>
+    </section>
+
+    <!-- 2. Аккордеон с сортировкой -->
+    <section class="component" id="accordion">
+        <h2>2. Аккордеон с сортировкой</h2>
+
+        <div class="accordion" id="sortableAccordion">
+
+            <div class="accordion-item" draggable="true">
+                <button class="accordion-button" aria-expanded="false">
+                    HTML <span>+</span>
+                </button>
+                <div class="accordion-content">
+                    HTML — язык гипертекстовой разметки,
+                    который используется для создания структуры веб-страниц.
+                </div>
+            </div>
+
+            <div class="accordion-item" draggable="true">
+                <button class="accordion-button" aria-expanded="false">
+                    CSS <span>+</span>
+                </button>
+                <div class="accordion-content">
+                    CSS — язык стилей, предназначенный для оформления
+                    веб-страниц и управления их внешним видом.
+                </div>
+            </div>
+
+            <div class="accordion-item" draggable="true">
+                <button class="accordion-button" aria-expanded="false">
+                    JavaScript <span>+</span>
+                </button>
+                <div class="accordion-content">
+                    JavaScript — язык программирования, который позволяет
+                    добавлять интерактивность и динамическое поведение.
+                </div>
+            </div>
+
+        </div>
+
+        <p class="accordion-hint">
+            Перетаскивай пункты, чтобы изменить их порядок.
+        </p>
+    </section>
+
+    <!-- 3. Слайдер -->
+    <section class="component slider-component" id="slider">
+        <h2>3. Слайдер изображений</h2>
+
+        <div class="slider">
+            <button id="prevSlide" class="slider-arrow">❮</button>
+
+            <div class="slider-viewport">
+                <div id="sliderTrack" class="slider-track">
+
+                    <div class="slide">
+                        <img src="https://picsum.photos/id/1015/600/350"
+                             alt="Горный пейзаж">
+                    </div>
+
+                    <div class="slide">
+                        <img src="https://picsum.photos/id/1016/600/350"
+                             alt="Природа">
+                    </div>
+
+                    <div class="slide">
+                        <img src="https://picsum.photos/id/1018/600/350"
+                             alt="Пейзаж">
+                    </div>
+
+                    <div class="slide">
+                        <img src="https://picsum.photos/id/1020/600/350"
+                             alt="Лес">
+                    </div>
+
+                    <div class="slide">
+                        <img src="https://picsum.photos/id/1024/600/350"
+                             alt="Животное">
+                    </div>
+
+                </div>
+            </div>
+
+            <button id="nextSlide" class="slider-arrow">❯</button>
+        </div>
+
+        <div id="sliderDots" class="slider-dots"></div>
+
+        <div class="slider-settings">
+
+            <label>
+                Направление:
+                <select id="sliderDirection">
+                    <option value="1">Вперёд</option>
+                    <option value="-1">Назад</option>
+                </select>
+            </label>
+
+            <label>
+                Скорость (сек):
+                <input type="range" id="sliderSpeed"
+                       min="1" max="5" value="3">
+                <span id="speedValue">3</span>
+            </label>
+
+            <label>
+                Изображений за раз:
+                <select id="slidesPerView">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+
+            <button id="toggleAutoplay">Остановить прокрутку</button>
+        </div>
+    </section>
+
+    <!-- 4. Вкладки -->
+    <section class="component" id="tabs">
+        <h2>4. Вкладки (Tab-панель)</h2>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="tab1">HTML</button>
+            <button class="tab-button" data-tab="tab2">CSS</button>
+            <button class="tab-button" data-tab="tab3">JavaScript</button>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <h3>HTML</h3>
+            HTML отвечает за создание структуры веб-страницы.
+            С его помощью размещаются заголовки, изображения,
+            текст, кнопки и другие элементы.
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <h3>CSS</h3>
+            CSS используется для оформления веб-страниц.
+            Он позволяет задавать цвета, размеры, расположение
+            элементов и анимации.
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <h3>JavaScript</h3>
+            JavaScript позволяет создавать интерактивные
+            элементы, обрабатывать события и изменять содержимое
+            веб-страницы.
+        </div>
+    </section>
+
+    <!-- 5. To-Do -->
+    <section class="component" id="todo">
+        <h2>5. Список задач To-Do</h2>
+
+        <div class="todo-input">
+            <input type="text" id="taskInput"
+                   placeholder="Введите новую задачу">
+            <button id="addTask">Добавить</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </section>
+
+    <!-- 6. Генератор -->
+    <section class="component" id="generator">
+        <h2>6. Генератор случайных чисел</h2>
+
+        <label for="minNumber">Минимальное значение</label>
+        <input type="number" id="minNumber" value="1">
+
+        <label for="maxNumber">Максимальное значение</label>
+        <input type="number" id="maxNumber" value="100">
+
+        <button id="generateNumber">Сгенерировать</button>
+
+        <div id="randomResult">?</div>
+    </section>
+
+    <!-- 7. Выпадающее меню -->
+    <section class="component" id="dropdown">
+        <h2>7. Выпадающее меню</h2>
+
+        <div class="dropdown">
+            <button id="dropdownButton"
+                    class="dropdown-button"
+                    aria-expanded="false">
+                <span>Выберите раздел</span>
+                <span id="dropdownArrow">⌄</span>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="#timer">⏱ Таймер</a>
+                <a href="#accordion">📂 Аккордеон</a>
+                <a href="#slider">🖼 Слайдер</a>
+                <a href="#tabs">📑 Вкладки</a>
+                <a href="#todo">📋 Список задач</a>
+                <a href="#generator">🎲 Генератор чисел</a>
+            </div>
+        </div>
+
+        <p id="dropdownResult" class="dropdown-result">
+            Вы пока ничего не выбрали
+        </p>
+    </section>
+
+    <!-- 8. Модальное окно -->
+    <section class="component" id="modal-demo">
+        <h2>8. Модальное окно</h2>
+
+        <p>Окно можно перемещать и изменять его размер.</p>
+
+        <button id="openModal">Открыть модальное окно</button>
+    </section>
+
+</main>
+
+<!-- Модальное окно -->
+<div id="modalOverlay" class="modal-overlay">
+    <div id="modalWindow" class="modal-window">
+
+        <div id="modalHeader" class="modal-header">
+            <h3>Интерактивное окно</h3>
+            <button id="closeModal" class="modal-close">×</button>
+        </div>
+
+        <div class="modal-body">
+            <h3>Управление модальным окном</h3>
+
+            <p>
+                Попробуй перетащить окно за заголовок.
+                Также можно изменить его размер,
+                потянув за нижний правый угол.
+            </p>
+
+            <p>
+                Это демонстрирует работу событий мыши
+                и динамическое изменение CSS-свойств.
+            </p>
+        </div>
+
+        <div class="modal-resize-handle"></div>
+    </div>
+</div>
+
+<footer>
+    <p>Лабораторная работа №5</p>
+    <p>Тема: «Основы JavaScript и проектирования компонентов»</p>
+    <p>Вариант 2</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
